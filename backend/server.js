@@ -6,11 +6,11 @@ const cookieParser = require("cookie-parser");
 const app = express();
 const port = 8080;
 
-// const corsOptions = {
-//   origin: "*",
-// };
+const corsOptions = {
+  origin: "*",
+};
 
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 const oneDay = 1000 * 60 * 60 * 24;
 
