@@ -1,28 +1,17 @@
-import { CounterResponse } from "@/types/api";
-import { cookies } from "next/dist/client/components/headers";
+import { cookies } from "next/headers";
+import Counter from "./counter";
 
 export default async function Home() {
-  const response = await getCounter();
-
-  console.log("test cookie: ", cookies().get("test"));
+  const sessionCookie = await getSessionCookie();
 
   return (
     <div>
       <h1>Hello World!</h1>
-      <h4>Counter: {response.counter}</h4>
+      <Counter cookie={sessionCookie} />
     </div>
   );
 }
 
-async function getCounter() {
-  const response = await fetch("http://localhost:3000/api", {
-    method: "GET",
-    cache: "no-cache",
-  });
-
-  const test = cookies().get("connect.sid");
-
-  console.log("cookie: ", test);
-
-  return response.json();
+async function getSessionCookie() {
+  return cookies().get("connect.sid")?.value;
 }
