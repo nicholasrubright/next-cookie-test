@@ -9,8 +9,6 @@ export default function Counter(props: CounterProps) {
 
   useEffect(() => {
     const getData = async () => {
-      console.log(cookie);
-
       const response = await fetch("/api", {
         cache: "no-cache",
         headers: {

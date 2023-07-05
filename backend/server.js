@@ -16,7 +16,7 @@ const oneDay = 1000 * 60 * 60 * 24;
 app.use(
   session({
     secret: "mysecret",
-    saveUninitialized: false,
+    saveUninitialized: true,
     cookie: { maxAge: oneDay },
     resave: false,
   })
@@ -30,6 +30,10 @@ app.get("/api/counter", (req, res) => {
   }
 
   res.json({ counter: req.session.counter });
+});
+
+app.get("/api/test", (req, res) => {
+  res.json({ message: "hello world!" });
 });
 
 app.listen(port, () => {

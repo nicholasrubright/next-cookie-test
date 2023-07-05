@@ -1,13 +1,10 @@
 import { cookies } from "next/headers";
-import Counter from "./counter";
+import LoadSession from "./LoadSession";
 
 export default async function Home() {
-  const sessionCookie = await getSessionCookie();
-
   return (
     <div>
       <h1>Hello World!</h1>
-      <Counter cookie={sessionCookie} />
     </div>
   );
 }
