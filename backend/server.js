@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const session = require("express-session");
-const cookieParser = require("cookie-parser");
 
 const app = express();
 const port = 8080;
@@ -23,8 +22,6 @@ app.use(
   })
 );
 
-// app.use(cookieParser());
-
 app.get("/api/counter", (req, res) => {
   if (req.session.counter) {
     req.session.counter++;
@@ -33,8 +30,6 @@ app.get("/api/counter", (req, res) => {
   }
 
   res.json({ counter: req.session.counter });
-
-  //res.json({ counter: req.session.counter });
 });
 
 app.listen(port, () => {
